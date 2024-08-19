@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+}
+nav{
+    background-color: rgb(46, 46, 46);
+    padding: 2em 2em;
+}
+#cla{
+    background-color: orange;
+    min-height: 100vh;
+    position: relative;
+    max-width: 100%;
+    flex: 1;
+    text-align: center;
+    border: black;
+    border-right:  solid 2px;
+}
+#vic{
+    background-color: rgb(0, 191, 255);
+    min-height: 100vh;
+    max-width: 100%;
+    flex: 1;
+    text-align: center;
+}
+
+.headers{
+    color: white;
+    font-size: 3em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.subheaders{
+    color: white;
+    font-size: 1em;
+}
+
