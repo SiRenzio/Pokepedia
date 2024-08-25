@@ -36,15 +36,45 @@ a:hover{
 }
 
 #cla{
-    background-color: orange;
+    display: flex;
     min-height: 100vh;
     position: relative;
     max-width: 100%;
     flex: 1;
-    text-align: center;
+    background-color: black;
+    /* text-align: center; */
     border: black;
     border-right:  solid 2px;
 }
+
+.cla_info_container{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 16px 2em;
+}
+
+.cla_info_container h3{
+    color: white;
+}
+
+#cla_desc{
+    font-size: 10px;
+    color: white;
+}
+
+#profile_pic_cla{
+    display: block;
+    margin-top: 21%;
+    margin-bottom: auto;
+    padding: 20px 25px;
+}
+
+#profile_pic_cla img{
+    border-radius: 50%;
+    width: 150px;
+}
+
 #vic{
     background-color: rgb(0, 191, 255);
     min-height: 100vh;
@@ -55,7 +85,7 @@ a:hover{
 
 .headers{
     color: white;
-    font-size: 3em;
+    font-size: 32px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
