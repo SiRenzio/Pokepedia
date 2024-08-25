@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: row;
 }
+
 nav{
     background-color: rgb(46, 46, 46);
     padding: 1em 2em;
@@ -47,40 +48,32 @@ a:hover{
     border-right:  solid 2px;
 }
 
-.cla_info_container{
+.infoContainer{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     padding: 16px 2em;
 }
 
-.cla_info_container h3{
+.infoContainer h3{
     color: white;
 }
 
-#cla_desc{
+.description{
     font-size: 10px;
     color: white;
 }
 
-#profile_pic_cla{
+.profilePic{
     display: block;
-    margin-top: 21%;
+    margin-top: 25%;
     margin-bottom: auto;
     padding: 20px 25px;
 }
 
-#profile_pic_cla img{
+.profilePic img{
     border-radius: 50%;
     width: 150px;
-}
-
-#vic{
-    background-color: rgb(0, 191, 255);
-    min-height: 100vh;
-    max-width: 100%;
-    flex: 1;
-    text-align: center;
 }
 
 .headers{
@@ -105,13 +98,25 @@ footer p{
     color: white;
 }
 
-.stack{
-    height: 2.25em;
-    width: 2em;
+
+    /* -------------------------------------------------- Victor Styles -------------------------------------------------- */
+
+#vic{
+    display: flex;
+    background-color: rgb(244, 252, 255);
+    min-height: 100vh;
+    max-width: 100%;
+    flex: 1;
+    text-align: center;
 }
 
-#profilePic1{
-    margin-top: 1em;
+#intro1, #intro2, #vicDescription{
+    color: black;
+}
+
+.stack{
+    height: 2.25em; 
+    width: 2em;
 }
 
 #cProg{
@@ -124,4 +129,8 @@ footer p{
 
 #css{
     width: 2.25em;
+}
+
+#vicStack{
+    color: black;
 }
