@@ -74,3 +74,24 @@ footer{
 footer p{
     color: white;
 }
+
+.stack{
+    height: 2.25em;
+    width: 2em;
+}
+
+#profilePic1{
+    margin-top: 1em;
+}
+
+#cProg{
+    width: 2.25em;
+}
+
+#html{
+    width: 2.25em;
+}
+
+#css{
+    width: 2.25em;
+}
