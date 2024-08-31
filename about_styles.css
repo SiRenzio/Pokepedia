@@ -100,6 +100,52 @@ footer p{
     color: white;
 }
 
+#socials_container1{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 70%;
+    padding: 16px 2em;
+    cursor: pointer;
+}
+
+#socials_container1 h3{
+    color: white;
+}
+
+#socials_container1 .fa{
+    padding: 10px;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 16px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+#socials_container1 .fa:hover{
+    background-color: white;
+    color: black;
+}
+
+#socials_container1 .fa-facebook{
+    background-color: black;
+    color: white;
+}
+
+#socials_container1 .fa-youtube-play{
+    background-color: black;
+    color: white;
+}
+
+#socials_container1 .fa-github{
+    background-color: black;
+    color: white;
+}
 
     /* -------------------------------------------------- Victor Styles -------------------------------------------------- */
 
@@ -134,5 +180,54 @@ footer p{
 }
 
 #vic_Stack{
+    color: black;
+}
+
+#socials_container2{
+    position: absolute;
+    text-align: right;
+    left: 81%;
+    display: flex;
+    flex-direction: column;
+    top: 70%;
+    padding: 16px 2em;
+    cursor: pointer;
+}
+
+#socials_container2 h3{
+    color: black;
+}
+
+#socials_container2 .fa{
+    padding: 10px;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 16px;
+    border-radius: 50%;
+    border: 2px solid black;
+    transition: 0.3s;
+}
+
+#socials_container2 .fa:hover{
+    background-color: black;
+    color: white;
+}
+
+#socials_container2 .fa-facebook{
+    background-color: white;
+    color: black;
+}
+
+#socials_container2 .fa-youtube-play{
+    background-color: white;
+    color: black;
+}
+
+#socials_container2 .fa-github{
+    background-color: white;
     color: black;
 }
