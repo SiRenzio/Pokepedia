@@ -75,7 +75,8 @@ a:hover{
 
 .profile_Pic img{
     border-radius: 50%;
-    width: 150px;
+    width: 11.5em;
+    height: 11.5em;
 }
 
 .headers{
@@ -212,6 +213,7 @@ footer p{
     transition: 0.3s;
 }
 
+
 #socials_container2 .fa:hover{
     background-color: black;
     color: white;
@@ -223,6 +225,11 @@ footer p{
 }
 
 #socials_container2 .fa-youtube-play{
+    background-color: white;
+    color: black;
+}
+
+#socials_container2 .fa-instagram{
     background-color: white;
     color: black;
 }
