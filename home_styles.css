@@ -8,6 +8,10 @@ body, html{
     overflow-y: auto;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: rgb(35, 35, 35);
 }
@@ -162,14 +166,39 @@ table tr td:nth-child(4){
     display: flex;
     justify-content: center;
     align-items: center;
+    color: rgb(255, 255, 255);
 }
 
 .poke_type{
-    padding: 0px 8px;
+    width: 64px;
+    margin: 0px 8px;
+    padding: 8px 8px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 #poke_img{
     width: 150px;
+}
+
+#grass_type{
+    background-color: #3fa149;
+}
+
+#poison_type{
+    background-color: #9141cb;
+}
+
+#fire_type{
+    background-color: #e62829;
+}
+
+#flying_type{
+    background-color: #81b9ef;
+}
+
+#water_type{
+    background-color: #2980ef;
 }
 
 
