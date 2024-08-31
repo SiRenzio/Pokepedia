@@ -50,14 +50,14 @@ a:hover{
     border-right:  solid 2px;
 }
 
-.infoContainer{
+.info_Container{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     padding: 16px 2em;
 }
 
-.infoContainer h3{
+.info_Container h3{
     color: white;
 }
 
@@ -66,14 +66,14 @@ a:hover{
     color: white;
 }
 
-.profilePic{
+.profile_Pic{
     display: block;
     margin-top: 25%;
     margin-bottom: auto;
     padding: 20px 25px;
 }
 
-.profilePic img{
+.profile_Pic img{
     border-radius: 50%;
     width: 150px;
 }
@@ -84,7 +84,7 @@ a:hover{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.subheaders{
+.sub_Headers{
     color: white;
     font-size: 1em;
 }
@@ -112,7 +112,7 @@ footer p{
     text-align: right;
 }
 
-#intro1, #intro2, #vicDescription{
+#intro1, #intro2, #vic_Description{
     color: black;
 }
 
@@ -133,6 +133,6 @@ footer p{
     width: 2.25em;
 }
 
-#vicStack{
+#vic_Stack{
     color: black;
 }
