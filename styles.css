@@ -109,7 +109,7 @@ footer p{
     min-height: 100vh;
     max-width: 100%;
     flex: 1;
-    text-align: center;
+    text-align: right;
 }
 
 #intro1, #intro2, #vicDescription{
