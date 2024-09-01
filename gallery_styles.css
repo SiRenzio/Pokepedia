@@ -8,9 +8,19 @@ body{
     background-color: rgb(39, 39, 39);
 }
 
+#logo{
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    left: 2em;
+    bottom: 0.1em;
+}
+
 nav{
     background-color: rgb(46, 46, 46);
-    padding: 1em 2em;
+    position: fixed;
+    overflow: hidden;
+    padding: 1em 3em;
     width: 95%;
     position: fixed;
     display: flex;

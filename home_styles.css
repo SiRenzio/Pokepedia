@@ -15,11 +15,20 @@ html{
 body{
     background-color: rgb(35, 35, 35);
 }
+
+#logo{
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    left: 2em;
+    bottom: 0.1em;
+}
+
 nav{
     background-color: rgb(46, 46, 46);
     position: fixed;
     overflow: hidden;
-    padding: 1em 2em;
+    padding: 1em 3em;
     width: 95%;
     position: fixed;
     display: flex;
@@ -224,22 +233,7 @@ table tr td:nth-child(4){
     background-color: #2980ef;
 }
 
-
-
 /* ------------------------------------------------------ Animation ------------------------------------------------------ */
-
-@keyframes homescreentxt {
-    from {color: rgb(255, 98, 0);}
-    to {
-        text-shadow:
-        0 0 10px #fff,
-        0 0 42px #ff0909,
-        0 0 82px #ff0909,
-        0 0 92px #ff0909,
-        0 0 102px #ff0909;
-        font-size: 50px;
-    }
-}
 
 footer{
     background-color: rgb(46, 46, 46);
