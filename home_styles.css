@@ -21,7 +21,10 @@ body{
     height: 3em;
     position: absolute;
     left: 2em;
-    bottom: 0.1em;
+    bottom: 2px;
+    border-radius: 3em;
+    outline: 3px solid black; 
+    outline-offset: -7px; 
 }
 
 nav{
