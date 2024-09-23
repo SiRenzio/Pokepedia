@@ -60,17 +60,6 @@
     font-size: 1em;
 }
 
-footer{
-    background-color: rgb(46, 46, 46);
-    padding: 4px 2em;
-    display: flex;
-    justify-content: center;
-}
-
-footer p{
-    color: white;
-}
-
 #socials_container1{
     position: absolute;
     display: flex;

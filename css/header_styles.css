@@ -1,3 +1,9 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
 #logo{
     width: 3em;
     height: 3em;
