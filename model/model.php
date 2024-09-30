@@ -7,7 +7,7 @@ class Model
 	{
 		try
 		{
-			$this->db = new mysqli('localhost', 'root', '', 'library');
+			$this->db = new mysqli('localhost', 'root', '', 'pokepediadex');
 		}
 		catch(mysqli_sql_exception $e)
 		{
@@ -20,7 +20,7 @@ class Model
 	{
 		$data = array();
 
-		$queryGetBooks = mysqli_query($this->db,"SELECT * from tblbooks");
+		$queryGetBooks = mysqli_query($this->db,"SELECT * from pokedex");
 
 		while($getRow=mysqli_fetch_object($queryGetBooks))    		
 		{    			
