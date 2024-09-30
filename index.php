@@ -10,9 +10,9 @@
         $controller->getPage();	
     echo "</div>";
 
-    echo"<div align=CENTERR>";
-        include_once( 'html/home.html');
-    echo"</div>";
+    // echo"<div align=CENTERR>";
+    //     include_once( 'html/home.html');
+    // echo"</div>";
 
     echo"<div align=CENTERR>";
         include_once( 'html/footer.html');

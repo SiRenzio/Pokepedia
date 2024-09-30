@@ -1,11 +1,15 @@
 <?php
 class Controller{
+
+    public $model=null;
+
     function __construct(){
-        
+        require_once('model/model.php');
+		$this->model=new Model();
     }
 
     public function getPage(){
-        $control = null;
+        $control = 'home';
 
         if(isset($_REQUEST['control']))
             $control= $_REQUEST['control'];
@@ -29,9 +33,14 @@ class Controller{
                 include('html/gallery.html');
                 break;
             }
+
+            case 'viewBooks':
+            {
+                $books=$this->model->getBookList();	
+                include 'html/viewbooklist2.php';
+                break;
+            }
         }
     }
-
-
 }
 ?>
