@@ -34,10 +34,10 @@ class Controller{
                 break;
             }
 
-            case 'viewBooks':
+            case 'pokeDex':
             {
                 $books=$this->model->getBookList();	
-                include 'html/viewbooklist2.php';
+                include 'html/pokeDex.php';
                 break;
             }
         }
