@@ -34,6 +34,14 @@ class Controller{
                 break;
             }
 
+            case 'pokeDetails':
+            {
+                $pokeID = $_GET['num'];
+                $details=$this->model->getPokeDetails($pokeID);
+                include('html/pokeDetails.php');
+                break;
+            }
+
             case 'pokeDex':
             {
                 $books=$this->model->getBookList();	

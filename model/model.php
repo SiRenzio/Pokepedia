@@ -28,5 +28,18 @@ class Model
 		}
 		return $data;     
 	}
+
+	public function getPokeDetails($pokeID)
+	{
+		$data = array();
+
+		$queryGetDetails = mysqli_query($this->db,"SELECT * FROM pokedex WHERE id = $pokeID");
+
+		while($getRow=mysqli_fetch_object($queryGetDetails))    		
+		{    			
+			$data[] = $getRow;
+		}
+		return $data;     
+	}
 	
 }

@@ -19,15 +19,14 @@
 			<tfoot>
 			<tbody>
 			<?php
-				foreach($books as $title=>$MybookList)
+				foreach($books as $pokes=>$Pokedex)
 				{
 
 					echo "<tr>";
-						echo "<td><a href='index.php?command=14&&page=$MybookList->id'>". $MybookList->id ."</a></td>";
-						echo "<td>". $MybookList->name ."</td>";
-						echo "<td>". $MybookList->type1 ."</td>";	
-						echo "<td>". $MybookList->type2 ."</td>";								
-						echo "<td>Edit | Delete </td>";
+						echo "<td><a href='index.php?control=pokeDetails&num=$Pokedex->id'>". $Pokedex->id ."</a></td>";
+						echo "<td>". $Pokedex->name ."</td>";
+						echo "<td>". $Pokedex->type1 ."</td>";	
+						echo "<td>". $Pokedex->type2 ."</td>";
 					echo "</tr>";
 				}
 			?>
