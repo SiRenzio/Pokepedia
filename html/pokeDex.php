@@ -23,10 +23,11 @@
 				{
 
 					echo "<tr>";
-						echo "<td><a href='index.php?control=pokeDetails&num=$Pokedex->id'>". $Pokedex->id ."</a></td>";
+						echo "<td><a href='index.php?control=pokeDetails&&num=$Pokedex->id'>". $Pokedex->id ."</a></td>";
 						echo "<td>". $Pokedex->name ."</td>";
 						echo "<td>". $Pokedex->type1 ."</td>";	
 						echo "<td>". $Pokedex->type2 ."</td>";
+						echo "<td>Edit | <a href='index.php?control=deleteRec&&id=".$Pokedex->id."' onclick='return confirm(\"Are you sure you want to do Delete this record?\")'>Delete</a></td>";
 					echo "</tr>";
 				}
 			?>

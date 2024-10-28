@@ -48,6 +48,17 @@ class Controller{
                 include 'html/pokeDex.php';
                 break;
             }
+
+            case 'deleteRec':
+            {
+                $pokeid=$_REQUEST['id'];	
+
+                $result=$this->model->deleteRecord($pokeid);
+                echo "<script> alert ('".$result."')
+                        window.location.href='index.php?control=pokeDex'
+                        </script>";						
+                break;
+            }
         }
     }
 }

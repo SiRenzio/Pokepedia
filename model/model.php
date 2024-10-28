@@ -41,5 +41,17 @@ class Model
 		}
 		return $data;     
 	}
+
+	public function deleteRecord($pokeid)
+    {
+    	$sql="DELETE FROM pokedex WHERE id=$pokeid";
+		
+		$result = mysqli_query($this->db,$sql);
+		
+		if(!$result)
+			return mysqli_error($this->db);
+		else
+			return "Record Deleted";
+    }
 	
 }
