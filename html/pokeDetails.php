@@ -8,7 +8,7 @@
 <body>
     <div class="Container">
         <?php
-	    	foreach($details as $title=>$pokeDetails)
+	    	foreach($pokemons as $id=>$pokeDetails)
 	    	{
 	    		echo  "ID: " . $pokeDetails->id . "<br>";
                 echo "Name: " . $pokeDetails->poke_name . "<br>";
@@ -20,7 +20,6 @@
                 echo "Mega Evolves: " . $pokeDetails->mega_evolves . "<br>";
                 echo "Next Evolution: " . $pokeDetails->next_evolution . "<br>";
                 echo "<img src='" . $pokeDetails->poke_image . "' alt='poke_img' class='poke_img'>" . "<br>";
-
 	    	}
 	    ?>
     </div>

@@ -9,7 +9,7 @@
 	<div class="pokeDexContainer">
 		<table>
 			<thead>
-			<tr>
+			<tr>		
 				<th width=21% align="center">id</th>
 				<th width=21% align="center">Name</th>
 				<td width=50% align="center">Type 1</td>
@@ -19,9 +19,8 @@
 			<tfoot>
 			<tbody>
 			<?php
-				foreach($books as $pokes=>$Pokedex)
+				foreach($pokemons as $id=>$Pokedex)
 				{
-
 					echo "<tr>";
 						echo "<td><a href='index.php?control=pokeDetails&&num=$Pokedex->id'>". $Pokedex->id ."</a></td>";
 						echo "<td>". $Pokedex->poke_name ."</td>";
