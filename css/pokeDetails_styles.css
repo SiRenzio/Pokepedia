@@ -4,8 +4,25 @@
     font-family: sans-serif;
 }
 
-.Container{
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100vh;
-    padding-top: 4em;
+    padding-top: 2em;
+}
+
+.wrapper{
+    width: 520px;
+    text-align: center;
+}
+
+.text_details{
+    text-align: left;
+}
+
+.poke_img{
+    width: 300px;
 }

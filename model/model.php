@@ -128,5 +128,33 @@ class Model
 		else
 			return "Record Save";
     }
+
+	public function searchBook($id)
+    {
+    	$data = array();
+
+		$queryGetID = mysqli_query($this->db,"SELECT * from pokedex where id='".$id."'");
+
+		while($getRow=mysqli_fetch_object($queryGetID))    		
+		{    			
+		  $data[] = $getRow; // add the row in to the results (data) array
+		}
+		return $data;  
+    }
+
+    public function updateRecords($id,$name,$type1,$type2,$description,$height,$weight,$mega_evolves,$next_evolution,$images)
+    {
+    	$updateQuery="UPDATE pokedex SET poke_name='$name',type1='$type1',type2='$type2',poke_description='$description',poke_weight='$weight',
+    						height='$height',mega_evolves='$mega_evolves',next_evolution='$next_evolution',poke_image='$images' WHERE id=$id";
+
+    	var_dump($updateQuery);
+		
+		$result = mysqli_query($this->db,$updateQuery);
+		
+		if(!$result)
+			return mysqli_error($this->db);
+		else
+			return "Record Updated";
+    }
 	
 }

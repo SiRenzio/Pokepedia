@@ -1,0 +1,48 @@
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-button {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #197909;	
+    color: #fff;
+    padding: 10px 20px;		
+}
+
+/* Add */
+
+.addContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.addWrapper{
+    padding-top: 5em;
+    padding-bottom: 2em;
+}
+
+/* Edit */
+
+.editContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.editWrapper{
+    width: 800px;
+    padding-top: 5em;
+    padding-bottom: 4em;
+}
+
+.editWrapper table{
+    width: 100%;
+}

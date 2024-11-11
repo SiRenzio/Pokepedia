@@ -102,9 +102,57 @@ class Controller{
                 else
                 {
                     echo '<script> alert ("'.$err.'")</script>';
-                }				
+                }			
 
                 break;   
+            }
+
+            case 'editPokes'://Edit Books
+                {
+                    
+                    $id=$_REQUEST['id'];
+                                        
+                    $poke=$this->model->searchBook($id);
+                    
+                    include 'html/edit_poke.php';				
+                    break;
+                }
+                
+            case 'updateRec':
+            {				
+                $id=$_REQUEST['id'];
+                $name=$_REQUEST['name'];
+                $type1=$_REQUEST['type1'];
+                $type2=$_REQUEST['type2'];
+                $description=$_REQUEST['description'];
+                $weight=$_REQUEST['weight'];
+                $height=$_REQUEST['height'];
+                $mega_evolves=$_REQUEST['mega_evolves'];
+                $next_evolution=$_REQUEST['next_evolution'];
+            
+                $imageUpload=basename($_FILES["fileToUpload"]["name"]);
+            
+                $imagePath="img_upload/". $imageUpload;
+            
+                $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION));
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                
+            
+                $err=$this->model->checkImageUpload($check,$imageFileType,$imagePath);
+                
+                
+                if($err=="K")
+                {
+                    $result=$this->model->updateRecords($id,$name,$type1,$type2,$description,$weight,$height,$mega_evolves,$next_evolution,$imagePath);
+                    echo "<script> alert ('".$result."')
+                        window.location.href='index.php?control=pokeDex'
+                    </script>";
+                }
+                else
+                {
+                    echo '<script> alert ("'.$err.'")</script>';
+                }					
+                break;
             }
         }
     }
