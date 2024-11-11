@@ -107,12 +107,11 @@ class Controller{
                 break;   
             }
 
-            case 'editPokes'://Edit Books
+            case 'editPokes':
                 {
-                    
                     $id=$_REQUEST['id'];
                                         
-                    $poke=$this->model->searchBook($id);
+                    $poke=$this->model->searchPokemon($id);
                     
                     include 'html/edit_poke.php';				
                     break;

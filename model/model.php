@@ -129,7 +129,7 @@ class Model
 			return "Record Save";
     }
 
-	public function searchBook($id)
+	public function searchPokemon($id)
     {
     	$data = array();
 
