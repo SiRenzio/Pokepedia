@@ -103,10 +103,9 @@ class Model
 		} 
 		else // if everything is ok, try to upload file
 		{
-			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) // moves fileupload to targetfile.
 			{
 				$errMsg = "K";
-				
 			} 
 			else 
 			{

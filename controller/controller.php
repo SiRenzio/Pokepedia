@@ -78,10 +78,11 @@ class Controller{
                 
                 $imageUpload=basename($_FILES["fileToUpload"]["name"]); /* - gives access to 'fileToUpload's' filename, 
                 - $_FILES is a PHP superglobal array used to handle file uploads. 
-                - basename() ensures that only the filename is being stored. */
+                - basename() ensures that only the filename is being stored, directory is no longer retrieved. */
 
-                $imagePath="img_upload/". $imageUpload;
-
+                $imagePath="img_upload/". $imageUpload; /* Just assigns name to Imagepath
+                - but does not contain actual file content,
+                - it will contain file content later on when "tmp_name" is assigned here. */
                 $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION)); /* pathinfo() has 2 parameters,
                 - 1st parameter is the image path whose extension you want to retrieve.
                 - 2nd parameter tells pathinfo() to return the file extension.
