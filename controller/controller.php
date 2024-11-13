@@ -112,7 +112,7 @@ class Controller{
                 {
                     $id=$_REQUEST['id'];
                                         
-                    $poke=$this->model->searchPokemon($id);
+                    $poke=$this->model->getPokeDetails($id);
                     
                     include 'html/edit_poke.php';				
                     break;
