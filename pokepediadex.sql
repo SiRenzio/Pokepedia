@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2024 at 10:16 AM
+-- Generation Time: Nov 15, 2024 at 02:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,7 +52,8 @@ INSERT INTO `pokedex` (`id`, `poke_name`, `type1`, `type2`, `poke_description`, 
 (5, 'Charmeleon', 'Fire', 'None', 'Charmeleon mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color.', 43, 42, 'FALSE', 'Charizard', 'img_upload/005.png'),
 (6, 'Charizard', 'Fire', 'Flying', 'Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself.', 67, 200, 'TRUE', 'None', 'img_upload/006.png'),
 (7, 'Squirtle', 'Water', 'None', 'Squirtle\'s shell is not merely used for protection. The shell\'s rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds.', 0, 20, 'FALSE', 'Wartortle', 'img_upload/007.png'),
-(8, 'Wartortle', 'Water', 'None', 'Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as Wartortle ages. The scratches on its shell are evidence of this Pokémon\'s toughness as a battler.', 49, 39, 'FALSE', 'Blastoise', 'img_upload/008.png');
+(8, 'Wartortle', 'Water', 'None', 'Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as Wartortle ages. The scratches on its shell are evidence of this Pokémon\'s toughness as a battler.', 49, 39, 'FALSE', 'Blastoise', 'img_upload/008.png'),
+(9, 'Blastoise', 'Water', 'None', 'Blastoise has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet.', 189, 63, 'TRUE', 'None', 'img_upload/009.png');
 
 --
 -- Indexes for dumped tables
@@ -72,7 +73,7 @@ ALTER TABLE `pokedex`
 -- AUTO_INCREMENT for table `pokedex`
 --
 ALTER TABLE `pokedex`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

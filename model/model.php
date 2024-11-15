@@ -117,6 +117,7 @@ class Model
 
 	public function insertPokeData($id,$name,$type1,$type2,$description,$weight,$height,$me,$ne,$images)
     {
+		// Convert to Prepared Statement TODO
     	$sql="INSERT into pokedex(id, poke_name, type1, type2, poke_description, poke_weight, height, mega_evolves, next_evolution, poke_image)
 											values('$id','$name','$type1','$type2', '$description','$weight','$height','$me','$ne','$images')";
 		
@@ -130,7 +131,8 @@ class Model
 
     public function updateRecords($id,$name,$type1,$type2,$description,$height,$weight,$mega_evolves,$next_evolution,$images)
     {
-    	$updateQuery="UPDATE pokedex SET poke_name='$name',type1='$type1',type2='$type2',poke_description='$description',poke_weight='$weight',
+		// Convert to Prepared Statement TODO
+    	$updateQuery="UPDATE pokedex SET id='$id', poke_name='$name',type1='$type1',type2='$type2',poke_description='$description',poke_weight='$weight',
     						height='$height',mega_evolves='$mega_evolves',next_evolution='$next_evolution',poke_image='$images' WHERE id=$id";
 
     	var_dump($updateQuery);
