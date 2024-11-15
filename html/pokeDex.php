@@ -19,7 +19,7 @@
 			<tfoot>
 			<tbody>
 			<?php
-				foreach($pokemons as $id=>$Pokedex)
+				foreach($pokemons as $Pokedex)
 				{
 					echo "<tr>";
 						echo "<td><a href='index.php?control=pokeDetails&&num=$Pokedex->id'>". $Pokedex->id ."</a></td>";
