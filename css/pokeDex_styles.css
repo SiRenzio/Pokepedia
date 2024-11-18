@@ -49,3 +49,7 @@ td a:hover{
 th{
     color: #ffff;
 }
+
+textarea {
+    resize: none;
+}

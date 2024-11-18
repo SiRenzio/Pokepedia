@@ -58,7 +58,7 @@
 		        		<td colspan="2">Description:</td>
 		        	</tr>
 		        	<tr>
-		        		<td colspan="2"><textarea name='description' cols=116 rows=10><?php echo $poke[0]->poke_description ?></textarea> </td>
+		        		<td colspan="2"><textarea name='description' style="resize: none;" cols=116 rows=10><?php echo $poke[0]->poke_description ?></textarea> </td>
 		        	</tr>
 		        	<tr>
 		        		<td>Weight:</td>

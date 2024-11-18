@@ -35,7 +35,7 @@ class Model
 
 		$queryGetDetails = mysqli_query($this->db,"SELECT * FROM pokedex WHERE id = $pokeID");
 
-		while($getRow=mysqli_fetch_object($queryGetDetails))    		
+		if($getRow=mysqli_fetch_object($queryGetDetails))    		
 		{    			
 			$data[] = $getRow;
 		}
