@@ -23,7 +23,7 @@
 					foreach($pokemons as $Pokedex)
 					{
 						echo "<tr>";
-							echo "<td><a href='index.php?control=pokeDetails&&num=$Pokedex->id'>". $Pokedex->id ."</a></td>";
+							echo "<td><a href='index.php?control=pokeDetails&&id=$Pokedex->id'>". $Pokedex->id ."</a></td>";
 							echo "<td>". $Pokedex->poke_name ."</td>";
 							echo "<td>". $Pokedex->type1 ."</td>";	
 							echo "<td>". $Pokedex->type2 ."</td>";
