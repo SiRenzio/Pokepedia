@@ -151,7 +151,8 @@ class Model
 		$stmt->close;
     }
 
-	public function getExistingImage($id) {
+	public function getExistingImage($id) 
+	{
 		$sql = "SELECT poke_image FROM pokedex WHERE id = ?";
 		$stmt = $this->db->prepare($sql);
 		$stmt->bind_param("i", $id);
@@ -161,7 +162,6 @@ class Model
 		$stmt->close();
 		return $imagePath;
 	}
-	
 
 	//TODO delete Image
 

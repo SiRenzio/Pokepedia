@@ -29,13 +29,14 @@ class Controller{
 
             case 'gallery':
                 {
-                    include('html/gallery.html');
+                    $pokemon = $this->model->getPokedex();
+                    include('html/gallery.php');
                     break;
                 }
 
             case 'pokeDetails':
                 {
-                    $pokeID = $_GET['num'];
+                    $pokeID = $_GET['id'];
                     $pokemons = $this->model->getPokeDetails($pokeID);
                     include('html/pokeDetails.php');
                     break;
