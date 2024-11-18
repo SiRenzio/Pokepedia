@@ -48,7 +48,7 @@
 					</div>
 					<div class="input-field">
 						<label for="description">Description</label><br>
-						<textarea name="description" id="desc-field" style="resize: none;"></textarea>
+						<textarea name="description" id="desc-field" style='resize: none'></textarea>
 					</div>
 					<div class="input-field">
 						<label for="weight">Weight</label><br>

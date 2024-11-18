@@ -27,7 +27,7 @@
 	        <form action='index.php?control=updateRec' method='post' enctype='multipart/form-data'>
 	    	    <table align="center" border="1">
 	    		    <tr>
-	    			    <td>ID:</td>
+	    			    <td>Pokémon No.:</td>
 	    			<td><input type='text' name='id' value='<?php echo $poke[0]->id ?>'></input></td>
     	    		</tr>
 	        		<tr>
@@ -50,7 +50,7 @@
 		    	    </tr>
 		    	    <tr>
 		    		<td colspan="2" align="center">
-		    			<label for="fileToUpload" class="custom-file-button">Upload Cover Page</label>
+		    			<label for="fileToUpload" class="custom-file-button">Upload Pokemon Image</label>
 		    			<input type="file" name="fileToUpload" id="fileToUpload" onchange="imagePreview(event)" accept="image/*">
 		    		</td>
 		        	</tr>
