@@ -13,7 +13,7 @@
 	        	{
                     echo "<img src='" . $pokeDetails->poke_image . "' alt='poke_img' class='poke_img'>" . "<br>";
                     echo "<div class='text_details'>";
-	        		echo "ID: " . $pokeDetails->id . "<br>";
+	        		echo "Pokémon No.: " . $pokeDetails->id . "<br>";
                     echo "Name: " . $pokeDetails->poke_name . "<br>";
                     echo "Type1: " . $pokeDetails->type1 . "<br>";
                     echo "Type2: " . $pokeDetails->type2 . "<br>";

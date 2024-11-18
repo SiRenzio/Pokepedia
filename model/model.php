@@ -9,7 +9,7 @@ class Model
 		{
 			$this->db = new mysqli('localhost', 'root', '', 'pokepediadex');
 		}
-		catch(mysqli_sql_exception $e)
+		catch(mysqli_sql_exception)
 		{
 			exit('Database connection could not be established.');
 			echo "error";
@@ -20,9 +20,9 @@ class Model
 	{
 		$data = array();
 
-		$queryGetBooks = mysqli_query($this->db,"SELECT * from pokedex");
+		$sql = mysqli_query($this->db,"SELECT * from pokedex");
 
-		while($getRow=mysqli_fetch_object($queryGetBooks))    		
+		while($getRow=mysqli_fetch_object($sql))    		
 		{    			
 			$data[] = $getRow;
 		}
@@ -31,27 +31,34 @@ class Model
 
 	public function getPokeDetails($pokeID)
 	{
-		$data = array();
+		$data = null;
 
 		$queryGetDetails = mysqli_query($this->db,"SELECT * FROM pokedex WHERE id = $pokeID");
 
-		while($getRow=mysqli_fetch_object($queryGetDetails))    		
+		if($getRow=mysqli_fetch_object($queryGetDetails))    		
 		{    			
 			$data[] = $getRow;
 		}
 		return $data;     
 	}
 
-	public function deleteRecord($pokeid)
+	public function deleteRecord($pokeid,$imagePath)
     {
-    	$sql = "DELETE FROM pokedex WHERE id = $pokeid";
-		
-		$result = mysqli_query($this->db,$sql);
-		
-		if(!$result)
-			return mysqli_error($this->db);
-		else
-			return "Record Deleted";
+    	$sql = "DELETE FROM pokedex WHERE id = ?";
+		$stmt = $this->db->prepare($sql);
+		$stmt->bind_param('i', $pokeid);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		if (file_exists($imagePath)){
+			if(unlink($imagePath)){
+				return "Record Deleted";
+			}
+		}else{
+			return "Image Doesn't Exist";
+		}
+
+
     }
 
 	public function checkImageUpload($imageSize,$imageFileType,$target_file)
@@ -68,11 +75,9 @@ class Model
 				$errMsg= "Sorry, file already exists.";
 				$uploadOk = 0;
 			}
-
 			else
 			{
 				// Check file size
-				
 				if ($_FILES["fileToUpload"]["size"] > 5000000) 
 				{
 					var_dump($imageSize);
@@ -85,8 +90,7 @@ class Model
 				{
 					$errMsg= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
 					$uploadOk = 0;
-				}
-									
+				}			
 			}
 		} 
 		else 
@@ -117,32 +121,52 @@ class Model
 
 	public function insertPokeData($id,$name,$type1,$type2,$description,$weight,$height,$me,$ne,$images)
     {
-		// Convert to Prepared Statement TODO
-    	$sql="INSERT into pokedex(id, poke_name, type1, type2, poke_description, poke_weight, height, mega_evolves, next_evolution, poke_image)
-											values('$id','$name','$type1','$type2', '$description','$weight','$height','$me','$ne','$images')";
+		//change to prepared statement
+		$sql="INSERT INTO pokedex(id, poke_name, type1, type2, poke_description, poke_weight, height, mega_evolves, next_evolution, poke_image)
+											VALUES(? , ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$stmt = $this->db->prepare($sql);
+		$stmt->bind_param("issssddsss", $id, $name, $type1, $type2, $description, $weight, $height, $me, $ne, $images);
 		
-		$result = mysqli_query($this->db,$sql);
-		
-		if(!$result)
-			return mysqli_error($this->db);
+		if($stmt->execute())
+			return "Record Saved";
 		else
-			return "Record Save";
+			return mysqli_error($this->db);
+
+		$stmt->close;
     }
 
     public function updateRecords($id,$name,$type1,$type2,$description,$height,$weight,$mega_evolves,$next_evolution,$images)
     {
-		// Convert to Prepared Statement TODO
-    	$updateQuery="UPDATE pokedex SET id='$id', poke_name='$name',type1='$type1',type2='$type2',poke_description='$description',poke_weight='$weight',
-    						height='$height',mega_evolves='$mega_evolves',next_evolution='$next_evolution',poke_image='$images' WHERE id=$id";
-
-    	var_dump($updateQuery);
+		//change to prepared statement
+    	$sql="UPDATE pokedex SET id=?, poke_name=?,type1=?,type2=?,poke_description=?,poke_weight=?,
+    						height=?,mega_evolves=?,next_evolution=?,poke_image=? WHERE id=?";
+		$stmt = $this->db->prepare($sql);
+		$stmt->bind_param("issssddsssi", $id, $name, $type1, $type2, $description, $weight, $height, $mega_evolves, $next_evolution, $images, $id);
 		
-		$result = mysqli_query($this->db,$updateQuery);
-		
-		if(!$result)
-			return mysqli_error($this->db);
-		else
+		if($stmt->execute())
 			return "Record Updated";
+		else
+			return mysqli_error($this->db);
+
+		$stmt->close;
     }
+
+	public function getExistingImage($id) {
+		$sql = "SELECT poke_image FROM pokedex WHERE id = ?";
+		$stmt = $this->db->prepare($sql);
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+		$stmt->bind_result($imagePath);
+		$stmt->fetch();
+		$stmt->close();
+		return $imagePath;
+	}
+	
+
+	//TODO delete Image
+
+	//TODO search
+
+	//TODO add image to gallery
 	
 }
