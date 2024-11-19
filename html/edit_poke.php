@@ -23,7 +23,6 @@
 <body>
     <section class="editContainer">
         <div class="editWrapper">
-            <!-- <form action='index.php?command=13' method='post'> -->
 	        <form action='index.php?control=updateRec' method='post' enctype='multipart/form-data'>
 	    	    <table align="center" border="1">
 	    		    <tr>

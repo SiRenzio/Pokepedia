@@ -79,6 +79,7 @@ class Controller{
 
             case 'insertPoke':
                 {
+                    $id = $_REQUEST['id'];
                     $name = $_REQUEST['name'];
                     $type1 = $_REQUEST['type1'];
                     $type2 = $_REQUEST['type2'];
@@ -167,12 +168,6 @@ class Controller{
 
                     break;
                 }
-
-                //TODO addImage sa Gallery
-
-                //TODO delete Image
-
-                //TODO search
 
             default:
                 {

@@ -123,7 +123,7 @@ class Model
     {
 		//change to prepared statement
 		$sql="INSERT INTO pokedex(id, poke_name, type1, type2, poke_description, poke_weight, height, mega_evolves, next_evolution, poke_image)
-											VALUES(? , ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				VALUES(? , ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $this->db->prepare($sql);
 		$stmt->bind_param("issssddsss", $id, $name, $type1, $type2, $description, $weight, $height, $me, $ne, $images);
 		
@@ -148,7 +148,7 @@ class Model
 		else
 			return mysqli_error($this->db);
 
-		$stmt->close;
+		$stmt->close();
     }
 
 	public function getExistingImage($id) 
@@ -162,10 +162,7 @@ class Model
 		$stmt->close();
 		return $imagePath;
 	}
-
-	//TODO delete Image
-
-	//TODO search
+	
 	public function getPokeSearch($pokeSearch){
 		$data = null;
 
@@ -182,9 +179,7 @@ class Model
 		{    			
 			$data[] = $row;
 		}
+		$stmt->close();
 		return $data;  
 	}
-
-	//TODO add image to gallery
-	
 }
