@@ -15,7 +15,6 @@
             	preview.style.display = "block";
         	}
     	}
-    
     </script>
 </head>
 <body>

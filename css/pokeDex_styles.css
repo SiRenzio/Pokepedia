@@ -9,6 +9,7 @@
     justify-content: center;
     background-color: rgb(60, 60, 60);
     width: 100%;
+    height: 100vh;
 }
 
 .pokeDexWrapper{
@@ -23,7 +24,7 @@ table{
     padding-bottom: 2em;
     width: 75%;
     cursor: pointer;
-    height: 100vh;
+    height: 10em;
 }
 
 td{
@@ -32,6 +33,7 @@ td{
     border: 1px solid black;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
+    height: 2em;
 }
 
 td a{
