@@ -166,6 +166,24 @@ class Model
 	//TODO delete Image
 
 	//TODO search
+	public function getPokeSearch($pokeSearch){
+		$data = null;
+
+		$sql = "SELECT * FROM pokedex WHERE id LIKE ? OR poke_name LIKE ? OR type1 LIKE ? OR type2 LIKE ?";
+		$stmt = $this->db->prepare($sql);
+
+		$searchTerm = '%' . $pokeSearch . '%';
+		$stmt->bind_param("ssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm);
+
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		while($row = $result->fetch_object())    		
+		{    			
+			$data[] = $row;
+		}
+		return $data;  
+	}
 
 	//TODO add image to gallery
 	

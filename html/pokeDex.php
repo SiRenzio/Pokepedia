@@ -8,6 +8,11 @@
 <body>
 	<section class="pokeDexContainer">
 		<div class="pokeDexWrapper">
+			<form action="index.php?control=pokeDex" method="post">
+				<div class="search">
+					<input type="text" name="pokeSearch" placeholder="Search" autocomplete="off">
+				</div>
+			</form>
 			<table>
 				<thead>
 				<tr>		

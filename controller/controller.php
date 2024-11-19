@@ -44,8 +44,18 @@ class Controller{
 
             case 'pokeDex':
                 {
-                    $pokemons = $this->model->getPokedex();	
-                    include 'html/pokeDex.php';
+                    if($_POST){
+                        $pokeSearch = $_REQUEST['pokeSearch'];
+                    }
+
+                    if(isset($pokeSearch)){
+                        $pokemons = $this->model->getPokeSearch($pokeSearch);
+                        include 'html/pokeDex.php';
+                    }
+                    else{
+                        $pokemons = $this->model->getPokedex();	
+                        include 'html/pokeDex.php';
+                    }
                     break;
                 }
 
