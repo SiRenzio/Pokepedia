@@ -79,45 +79,50 @@ class Controller{
 
             case 'insertPoke':
                 {
-                    $id = $_REQUEST['id'];
+                    $pokemon_no=$_REQUEST['poke_no'];
                     $name = $_REQUEST['name'];
                     $type1 = $_REQUEST['type1'];
-                    $type2 = $_REQUEST['type2'];
+                    $type2 = $_REQUEST['type2'];    
                     $description = $_REQUEST['description'];
                     $weight = $_REQUEST['weight'];
                     $height = $_REQUEST['height'];
                     $me = $_REQUEST['mega_evolves'];
                     $ne = $_REQUEST['next_evolution'];
                 
-                    $imageUpload=basename($_FILES["fileToUpload"]["name"]); /* - gives access to 'fileToUpload's' filename, 
-                    - $_FILES is a PHP superglobal array used to handle file uploads. 
-                    - basename() ensures that only the filename is being stored, directory is no longer retrieved. */
 
-                    $imagePath="img_upload/". $imageUpload; /* Just assigns name to Imagepath
-                    - but does not contain actual file content,
-                    - it will contain file content later on when "tmp_name" is assigned here. */
-                    $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION)); /* pathinfo() has 2 parameters,
-                    - 1st parameter is the image path whose extension you want to retrieve.
-                    - 2nd parameter tells pathinfo() to return the file extension.
-                    - strtolower changes all letters into lowercase. */
-
-                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]); /* tmp_name is the temporary file location of the image
-                    - this returns a value of an array, where in different indexes, it contains the image's height, width, and imagetype */
-                
-                    $err=$this->model->checkImageUpload($check,$imageFileType,$imagePath);
-                
-                    if($err=="K")
-                    {
-                        $result=$this->model->insertPokeData($id,$name,$type1,$type2,$description,$weight,$height,$me,$ne,$imagePath);
-                        echo '<script> alert ("'.$result.'")</script>';
-                    
+                    if (!filter_var($pokemon_no, FILTER_VALIDATE_INT) || 
+                        !filter_var($weight, FILTER_VALIDATE_FLOAT) || 
+                        !filter_var($height, FILTER_VALIDATE_FLOAT)){
+                        echo '<script> alert("Please input a number on Pokemon No., Weight, Height!")</script>';
                         include 'html/addPokes.php';
                     }
-                    else
-                    {
-                        echo '<script> alert ("'.$err.'")</script>';
-                    }			
+                    else{
+                        if(!empty($_FILES["fileToUpload"]["name"])){
+                            $imageUpload=basename($_FILES["fileToUpload"]["name"]);
+                            
+                            $imagePath="img_upload/". $imageUpload;
+                            
+                            $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION));
+                            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    
+                            $err = $this->model->checkImageUpload($check,$imageFileType,$imagePath,1);
+                        }
+                        else{
+                            $err = 'No Image Selected';
+                        }
+                        
+                        if($err=="K" )
+                        {
+                            $result=$this->model->insertPokeData($pokemon_no,$name,$type1,$type2,$description,$weight,$height,$me,$ne,$imagePath);
+                            echo '<script> alert ("'.$result.'")</script>';
+                        }
+                        else
+                        {
+                            echo '<script> alert ("'.$err.'")</script>'; 
+                        }			
 
+                        include 'html/addPokes.php';
+                    }
                     break;   
                 }
 
@@ -134,6 +139,7 @@ class Controller{
             case 'updateRec':
                 {				
                     $id=$_REQUEST['id'];
+                    $pokemon_no=$_REQUEST['poke_no'];
                     $name=$_REQUEST['name'];
                     $type1=$_REQUEST['type1'];
                     $type2=$_REQUEST['type2'];
@@ -143,31 +149,46 @@ class Controller{
                     $mega_evolves=$_REQUEST['mega_evolves'];
                     $next_evolution=$_REQUEST['next_evolution'];
 
-                    if(!empty($_FILES["fileToUpload"]["name"])){
-                        $imageUpload=basename($_FILES["fileToUpload"]["name"]);
-            
-                        $imagePath="img_upload/". $imageUpload;
-                        
-                        $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION));
-                        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-
-                        $this->err=$this->model->checkImageUpload($check,$imageFileType,$imagePath);
-                        
-                    }
-                    else{
-                        $imagePath = $this->model->getExistingImage($id);
-                    }
-
-                    if($this->err == "K"){
-                        $result=$this->model->updateRecords($id,$name,$type1,$type2,$description,$weight,$height,$mega_evolves,$next_evolution,$imagePath);
-                        echo "<script> alert ('".$result."')
-                            window.location.href='index.php?control=pokeDex'
+                    if (!filter_var($pokemon_no, FILTER_VALIDATE_INT) || 
+                        !filter_var($weight, FILTER_VALIDATE_FLOAT) || 
+                        !filter_var($height, FILTER_VALIDATE_FLOAT)){
+                        echo "<script> alert('Please input a number on Pokemon No., Weight, Height!')
+                        window.location.href='index.php?control=editPokes&id=$id'
                         </script>";
                     }
+                    
                     else{
-                        echo "<script> alert ('".$this->err."')
-                            window.location.href='index.php?control=pokeDex'
-                        </script>";
+                        if(!empty($_FILES["fileToUpload"]["name"])){
+                            $imageUpload=basename($_FILES["fileToUpload"]["name"]);
+                
+                            $imagePath="img_upload/". $imageUpload;
+                            
+                            $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION));
+                            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    
+                            $err = $this->model->checkImageUpload($check,$imageFileType,$imagePath,2);
+
+                            if ($imagePath != $this->model->getExistingImage($id)){
+                                $oldImagePath = $this->model->getExistingImage($id);
+                                $this->model->deleteRecord($id,$oldImagePath);
+                            }
+                        }
+                        else{
+                            $imagePath = $this->model->getExistingImage($id);
+                            $err = 'K';
+                        }
+    
+                        if($err == "K"){
+                            $result=$this->model->updateRecords($id,$pokemon_no,$name,$type1,$type2,$description,$weight,$height,$mega_evolves,$next_evolution,$imagePath);
+                            echo "<script> alert ('".$result."')
+                                window.location.href='index.php?control=pokeDex'
+                            </script>";
+                        }
+                        else{
+                            echo "<script> alert ('".$err."')
+                            window.location.href='index.php?control=editPokes&id=$id'
+                            </script>";
+                        }
                     }
 
                     break;

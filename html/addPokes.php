@@ -14,18 +14,20 @@
             	preview.src = src;      
             	preview.style.display = "block";
         	}
-    	}
+    	}	
     </script>
 </head>
 <body>
 	<section class="addContainer">
 		<div class="addWrapper">
 			<div class="inputWrapper">
-				<form action='index.php?control=insertPoke' method='post' enctype='multipart/form-data'>
+				
+				<form <?php echo"action='index.php?control=insertPoke'"?> method='post' enctype='multipart/form-data'>
+
 					<h1>Add Pokémon</h1>
 					<div class="input-field">
 						<label for="id">Pokémon No.</label><br>
-						<input type="text" name="id" autocomplete="off" required></input>
+						<input type="text" name="poke_no" autocomplete="off" required></input>
 					</div>
 					<div class="input-field">
 						<label for="name">Name</label><br>

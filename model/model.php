@@ -29,11 +29,11 @@ class Model
 		return $data;     
 	}
 
-	public function getPokeDetails($pokeID)
+	public function getPokeDetails($id)
 	{
 		$data = null;
 
-		$queryGetDetails = mysqli_query($this->db,"SELECT * FROM pokedex WHERE id = $pokeID");
+		$queryGetDetails = mysqli_query($this->db,"SELECT * FROM pokedex WHERE id = $id");
 
 		if($getRow=mysqli_fetch_object($queryGetDetails))    		
 		{    			
@@ -61,7 +61,7 @@ class Model
 
     }
 
-	public function checkImageUpload($imageSize,$imageFileType,$target_file)
+	public function checkImageUpload($imageSize,$imageFileType,$target_file,$uploadType)
     {
 		$uploadOk = 1;
 		$errMsg = "1";
@@ -72,7 +72,11 @@ class Model
 
 			if (file_exists($target_file)) 
 			{
-				$errMsg= "Sorry, file already exists.";
+				if ($uploadType == 1){
+					$errMsg = "Sorry, file already exists.";
+				} else {
+					$errMsg = "You have chosen the same file, choose a different one.";
+				}
 				$uploadOk = 0;
 			}
 			else
@@ -80,7 +84,6 @@ class Model
 				// Check file size
 				if ($_FILES["fileToUpload"]["size"] > 5000000) 
 				{
-					var_dump($imageSize);
 					$errMsg= "Sorry, your file is too large.";
 					$uploadOk = 0;
 				}
@@ -119,29 +122,29 @@ class Model
 		return $errMsg;
     }
 
-	public function insertPokeData($id,$name,$type1,$type2,$description,$weight,$height,$me,$ne,$images)
+	public function insertPokeData($pokemon_no,$name,$type1,$type2,$description,$weight,$height,$me,$ne,$images)
     {
 		//change to prepared statement
-		$sql="INSERT INTO pokedex(id, poke_name, type1, type2, poke_description, poke_weight, height, mega_evolves, next_evolution, poke_image)
+		$sql="INSERT INTO pokedex(pokemon_no, poke_name, type1, type2, poke_description, poke_weight, height, mega_evolves, next_evolution, poke_image)
 				VALUES(? , ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $this->db->prepare($sql);
-		$stmt->bind_param("issssddsss", $id, $name, $type1, $type2, $description, $weight, $height, $me, $ne, $images);
+		$stmt->bind_param("issssddsss", $pokemon_no, $name, $type1, $type2, $description, $weight, $height, $me, $ne, $images);
 		
 		if($stmt->execute())
 			return "Record Saved";
 		else
 			return mysqli_error($this->db);
 
-		$stmt->close;
+		$stmt->close();
     }
 
-    public function updateRecords($id,$name,$type1,$type2,$description,$height,$weight,$mega_evolves,$next_evolution,$images)
+    public function updateRecords($id,$pokemon_no,$name,$type1,$type2,$description,$height,$weight,$mega_evolves,$next_evolution,$images)
     {
 		//change to prepared statement
-    	$sql="UPDATE pokedex SET id=?, poke_name=?,type1=?,type2=?,poke_description=?,poke_weight=?,
+    	$sql="UPDATE pokedex SET pokemon_no=?, poke_name=?,type1=?,type2=?,poke_description=?,poke_weight=?,
     						height=?,mega_evolves=?,next_evolution=?,poke_image=? WHERE id=?";
 		$stmt = $this->db->prepare($sql);
-		$stmt->bind_param("issssddsssi", $id, $name, $type1, $type2, $description, $weight, $height, $mega_evolves, $next_evolution, $images, $id);
+		$stmt->bind_param("issssddsssi", $pokemon_no, $name, $type1, $type2, $description, $weight, $height, $mega_evolves, $next_evolution, $images, $id);
 		
 		if($stmt->execute())
 			return "Record Updated";
@@ -166,14 +169,14 @@ class Model
 	public function getPokeSearch($pokeSearch){
 		$data = null;
 
-		$sql = "SELECT * FROM pokedex WHERE id LIKE ? OR poke_name LIKE ? OR type1 LIKE ? OR type2 LIKE ?";
+		$sql = "SELECT * FROM pokedex WHERE pokemon_no LIKE ? OR poke_name LIKE ? OR type1 LIKE ? OR type2 LIKE ?";
 		$stmt = $this->db->prepare($sql);
 
 		$searchTerm = '%' . $pokeSearch . '%';
 		$stmt->bind_param("ssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm);
 
 		$stmt->execute();
-		$result = $stmt->get_result();
+		$result = $stmt->get_result(); 
 
 		while($row = $result->fetch_object())    		
 		{    			

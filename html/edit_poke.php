@@ -8,7 +8,6 @@
 
 	<script type="text/javascript">
       function imagePreview(event) {
-
          if(event.target.files.length > 0)
          {
             var src = URL.createObjectURL(event.target.files[0]);
@@ -23,11 +22,11 @@
 <body>
     <section class="editContainer">
         <div class="editWrapper">
-	        <form action='index.php?control=updateRec' method='post' enctype='multipart/form-data'>
+	        <form action='index.php?control=updateRec&id=<?php echo $poke[0]->id ?>' method='post' enctype='multipart/form-data'>
 	    	    <table align="center" border="1">
 	    		    <tr>
 	    			    <td>Pokémon No.:</td>
-	    			<td><input type='text' name='id' value='<?php echo $poke[0]->id ?>'></input></td>
+	    			<td><input type='text' name='poke_no' value='<?php echo $poke[0]->pokemon_no ?>'></input></td>
     	    		</tr>
 	        		<tr>
 	        			<td>Name:</td>
