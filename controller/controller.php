@@ -151,20 +151,24 @@ class Controller{
                         $imageFileType = strtolower(pathinfo($imagePath,PATHINFO_EXTENSION));
                         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 
-                        $err=$this->model->checkImageUpload($check,$imageFileType,$imagePath);
-                        if($err=="K")
-                        {
-                            echo '<script> alert ("'.$err.'")</script>';
-                        }
+                        $this->err=$this->model->checkImageUpload($check,$imageFileType,$imagePath);
+                        
                     }
                     else{
                         $imagePath = $this->model->getExistingImage($id);
                     }
 
-                    $result=$this->model->updateRecords($id,$name,$type1,$type2,$description,$weight,$height,$mega_evolves,$next_evolution,$imagePath);
-                    echo "<script> alert ('".$result."')
+                    if($this->err == "K"){
+                        $result=$this->model->updateRecords($id,$name,$type1,$type2,$description,$weight,$height,$mega_evolves,$next_evolution,$imagePath);
+                        echo "<script> alert ('".$result."')
                             window.location.href='index.php?control=pokeDex'
                         </script>";
+                    }
+                    else{
+                        echo "<script> alert ('".$this->err."')
+                            window.location.href='index.php?control=pokeDex'
+                        </script>";
+                    }
 
                     break;
                 }
