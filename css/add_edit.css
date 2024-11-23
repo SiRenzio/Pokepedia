@@ -107,14 +107,15 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-height: 100vh;
 }
 
 .editWrapper{
-    width: 800px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(60, 60, 60);
+    width: 100%;
     padding-top: 5em;
-    padding-bottom: 4em;
+    padding-bottom: 2em;
 }
 
 .editWrapper table{

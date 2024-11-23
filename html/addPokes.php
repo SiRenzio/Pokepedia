@@ -21,9 +21,7 @@
 	<section class="addContainer">
 		<div class="addWrapper">
 			<div class="inputWrapper">
-				
 				<form <?php echo"action='index.php?control=insertPoke'"?> method='post' enctype='multipart/form-data'>
-
 					<h1>Add Pokémon</h1>
 					<div class="input-field">
 						<label for="id">Pokémon No.</label><br>

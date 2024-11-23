@@ -11,7 +11,7 @@
         <?php
             foreach ($pokemon as $starters){
                 echo "<div class = card>";
-                    echo "<a href='index.php?control=pokeDetails&id=$starters->pokemon_no'><img src='$starters->poke_image' class = starter></a>";
+                    echo "<a href='index.php?control=pokeDetails&id=$starters->id'><img src='$starters->poke_image' class = starter></a>";
                 echo "</div>";
             }
         ?>
