@@ -170,7 +170,7 @@ class Controller{
 
                             if ($imagePath != $this->model->getExistingImage($id)){
                                 $oldImagePath = $this->model->getExistingImage($id);
-                                $this->model->deleteRecord($id,$oldImagePath);
+                                unlink($oldImagePath);
                             }
                         }
                         else{
@@ -193,7 +193,7 @@ class Controller{
 
                     break;
                 }
-
+                
             default:
                 {
                     include 'html/home.html';
